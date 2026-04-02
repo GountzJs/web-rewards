@@ -7,7 +7,7 @@ interface Props {
   avatar: string;
 }
 
-const { total, avatar, username } = defineProps<Props>();
+const { total, avatar, username, cards, borders } = defineProps<Props>();
 
 const formatUsername = () => {
   if (username.length > 15) {
@@ -38,11 +38,11 @@ const formatUsername = () => {
       <p class="user-username">{{ formatUsername() }}</p>
       <div class="rewards-container">
         <div class="reward-detail">
-          <p class="quantity">154</p>
+          <p class="quantity">{{ borders }}</p>
           <p class="label">Bordes</p>
         </div>
         <div class="reward-detail">
-          <p class="quantity">0</p>
+          <p class="quantity">{{ cards }}</p>
           <p class="label">Cartas</p>
         </div>
       </div>

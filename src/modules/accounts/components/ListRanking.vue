@@ -1,26 +1,17 @@
 <script lang="ts" setup>
-import { getRanking } from "@/modules/accounts/api/api";
-import { ref } from "vue";
-import { rankingAdapter } from "../api/adapters/ranking.adapter";
-import type { UserRankingEntity } from "../api/entities/user-ranking.entity";
+import { useRanking } from "@/modules/accounts/services/ranking.ts";
 import PreviewRanking from "./PreviewRanking.vue";
 
-const error = ref<string | null>(null);
-const ranking = ref<UserRankingEntity[] | null>(null);
+const { fetchData, error, data } = useRanking();
 
-try {
-  const data = await getRanking();
-  ranking.value = rankingAdapter(data);
-} catch (err) {
-  error.value = err instanceof Error ? err.message : "Error al obtener el ranking";
-}
+await fetchData();
 </script>
 
 <template>
   <div v-if="error">{{ error }}</div>
   <ul v-else>
-    <li v-for="{ id, username, total, rank } in ranking" :key="id">
-      <PreviewRanking :username="username" :total="Number(total.borders) + Number(total.cards)" :rank="rank!" />
+    <li v-for="{ id, username, total, rank } in data" :key="id">
+      <PreviewRanking :username="username" :total="total.borders + total.cards" :rank="rank!" />
     </li>
   </ul>
 </template>

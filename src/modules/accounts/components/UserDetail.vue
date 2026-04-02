@@ -64,6 +64,7 @@ const formatUsername = () => {
   position: relative;
   height: fit-content;
   width: 230px;
+  min-width: 230px;
 }
 
 .profile-total {

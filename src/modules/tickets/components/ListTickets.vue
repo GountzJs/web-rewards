@@ -40,6 +40,7 @@ fetchData(id);
         :followingAt="following?.followedAt || null"
       />
     </div>
+    <p v-if="!data.length">No tienes tickets aún</p>
   </article>
 </template>
 

@@ -5,11 +5,11 @@ import { useProfileStore } from "@/modules/accounts/store/profile.store";
 import ListTabsComponent from "@/modules/shared/components/tabs/ListTabsComponent.vue";
 import TabComponent from "@/modules/shared/components/tabs/TabComponent.vue";
 import { storeToRefs } from "pinia";
-import { onUnmounted } from "vue";
+import { onUnmounted, watch, computed } from "vue";
 import { RouterView, useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
-const username = route.params.username;
+const username = computed(() => route.params.username as string);
 
 const isActive = (path: string) => {
   return route.path === path;
@@ -21,16 +21,30 @@ const { data } = storeToRefs(profileStore);
 
 const router = useRouter();
 
-if (!username) {
+if (!username.value) {
   router.push({ name: "home" });
 }
 
+const loadProfile = (username: string) => {
+  setIsLoading(true);
+  getProfile(username)
+    .then((profile) => setData(profile))
+    .catch((error) => setError(error as string))
+    .finally(() => setIsLoading(false));
+};
+
 setIsLoading(true);
 
-getProfile(username as string)
-  .then((profile) => setData(profile))
-  .catch((error) => setError(error as string))
-  .finally(() => setIsLoading(false));
+loadProfile(username.value);
+
+watch(
+  () => route.params.username,
+  (newUsername) => {
+    if (!newUsername) return router.push({ name: "home" });
+    reset();
+    loadProfile(newUsername as string);
+  },
+);
 
 onUnmounted(() => {
   reset();

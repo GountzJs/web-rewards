@@ -1,0 +1,29 @@
+:root {
+  --color-bg: #030712;
+  --color-footer: #101828;
+
+  --color-white: #ffffff;
+  --color-white-20: #ffffff33;
+  --color-white-60: #ffffff99;
+  --color-white-80: #ffffffcc;
+
+  --color-black: #000000;
+  --color-black-40: #00000066;
+
+  --color-purple: #8125d8;
+  --color-primary: #e2012d;
+
+  --color-gen: #a58721;
+
+  /* Embeecards */
+  --color-embeecard-embee: #17de6a;
+  --color-embeecard-embee-dark: #0e813e;
+  --color-embeecard-t1: #e3092b;
+  --color-embeecard-t1-dark: #711420;
+  --color-embeecard-troll: #9c4b97;
+  --color-embeecard-troll-dark: #674763;
+  --color-embeecard-lolesports: #6bc6d9;
+  --color-embeecard-lolesports-dark: #5c9398;
+  --color-embeecard-special: #a57713;
+  --color-embeecard-special-dark: #755914;
+}

@@ -1,0 +1,7 @@
+@import url("/fonts/nunito/stylsheet.css");
+@import url("/fonts/poppins/stylesheet.css");
+
+:root {
+  --font-nunito: "Nunito Sans", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}

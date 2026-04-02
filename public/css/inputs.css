@@ -1,0 +1,18 @@
+.input {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  outline: 2px solid var(--color-white-60);
+  color: var(--color-white-60);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 16px;
+  display: flex;
+  &::placeholder {
+    color: var(--color-white-60);
+  }
+  &:focus {
+    outline: 2px solid var(--color-white);
+    color: var(--color-white);
+  }
+}

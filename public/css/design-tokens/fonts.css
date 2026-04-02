@@ -1,7 +1,9 @@
 @import url("/fonts/nunito/stylsheet.css");
 @import url("/fonts/poppins/stylesheet.css");
+@import url("/fonts/bebas/stylesheet.css");
 
 :root {
   --font-nunito: "Nunito Sans", sans-serif;
   --font-poppins: "Poppins", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
 }

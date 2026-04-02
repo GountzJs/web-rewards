@@ -3,14 +3,14 @@ interface Props {
   total: number;
   borders: number;
   cards: number;
-  username: string;
+  username?: string;
   avatar: string;
 }
 
 const { total, avatar, username, cards, borders } = defineProps<Props>();
 
 const formatUsername = () => {
-  if (username.length > 15) {
+  if (username?.length > 15) {
     return username.slice(0, 15) + "...";
   }
 

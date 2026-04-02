@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <h1>Cards</h1>
+  <p>Página en mantenimiento, estamos trabajando para mejorar la experiencia</p>
 </template>
 
 <style scoped></style>

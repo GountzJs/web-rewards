@@ -6,9 +6,21 @@ import { cdnUrl } from "@/core/settings";
 interface Props extends TicketEntity {
   username: string;
   avatar: string;
+  team: string | null;
+  followingAt: string | null;
 }
 
-const { cover, hourMx, hourArg, date, url, username, avatar } = defineProps<Props>();
+const { cover, hourMx, hourArg, date, url, username, avatar, team, followingAt } =
+  defineProps<Props>();
+
+const formatDay = () => {
+  if (!followingAt) return "?";
+  return new Intl.DateTimeFormat("es-AR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  }).format(new Date(followingAt));
+};
 </script>
 
 <template>
@@ -34,8 +46,12 @@ const { cover, hourMx, hourArg, date, url, username, avatar } = defineProps<Prop
               alt="Avatar User"
             />
             <div class="user-box-following">
-              <p>Siguiendo: <b>28/10/1998</b></p>
-              <p>Equipo: <b>T1</b></p>
+              <p>
+                Siguiendo: <b>{{ formatDay() }}</b>
+              </p>
+              <p>
+                Equipo: <b>{{ team || "?" }}</b>
+              </p>
             </div>
           </div>
         </div>

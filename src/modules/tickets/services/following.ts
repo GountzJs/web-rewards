@@ -10,8 +10,8 @@ export const useFollowing = () => {
   const fetchData = async (username: string) => {
     isLoading.value = true;
     try {
-      const { tickets } = await getFollowing(username);
-      data.value = tickets;
+      const following = await getFollowing(username);
+      data.value = following;
     } catch (err) {
       error.value = err instanceof Error ? err.message : "Error al obtener el ranking";
     }

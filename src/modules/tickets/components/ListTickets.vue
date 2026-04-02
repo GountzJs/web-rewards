@@ -1,16 +1,23 @@
 <script lang="ts" setup>
 import { useTickets } from "../services/tickets";
 import TicketComponent from "./TicketComponent.vue";
+import { useFollowingStore } from "../store/following.store";
+import { storeToRefs } from "pinia";
 
 interface Props {
   id: string;
   username: string;
   avatar: string;
+  team: string | null;
 }
 
-const { id, username, avatar } = defineProps<Props>();
+const { id, username, avatar, team } = defineProps<Props>();
 
 const { data, fetchData, error, isLoading } = useTickets();
+
+const followingStore = useFollowingStore();
+
+const { data: following } = storeToRefs(followingStore);
 
 fetchData(id);
 </script>
@@ -29,6 +36,8 @@ fetchData(id);
         :url="ticket.url"
         :username="username"
         :avatar="avatar"
+        :team="team"
+        :followingAt="following?.followedAt || null"
       />
     </div>
   </article>

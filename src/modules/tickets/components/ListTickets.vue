@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useTickets } from "../services/tickets";
-import TicketComponent from "./TicketComponent.vue";
-import { useFollowingStore } from "../store/following.store";
 import { storeToRefs } from "pinia";
+import { useTickets } from "../services/tickets";
+import { useFollowingStore } from "../store/following.store";
+import TicketComponent from "./TicketComponent.vue";
 
 interface Props {
   id: string;
@@ -46,9 +46,6 @@ fetchData(id);
 
 <style scoped>
 .tickets-container {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
